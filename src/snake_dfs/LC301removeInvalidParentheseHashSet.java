@@ -18,7 +18,6 @@ public class LC301removeInvalidParentheseHashSet {
         removeL = count[0];
         removeR = count[1];
         StringBuilder path = new StringBuilder();
-        int delta = 0; // left - right
         dfs(res, path, s, 0, removeL, removeR, 0);
         return new ArrayList<>(res);
     }
@@ -50,6 +49,7 @@ public class LC301removeInvalidParentheseHashSet {
             res.add(path.toString());
             return;
         }
+        //fail basecase
         if (index >= s.length() || removeL < 0 || removeR < 0 || delta < 0) {
             return;
         }

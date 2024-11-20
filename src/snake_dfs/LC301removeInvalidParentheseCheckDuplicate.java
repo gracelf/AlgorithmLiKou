@@ -25,7 +25,7 @@ public class LC301removeInvalidParentheseCheckDuplicate {
     private int[] calculateRemoveCount(String s){
         int removeL = 0;
         int removeR = 0;
-        int delta = 0; 
+        int delta = 0; //delta = number of ( to be removed
         char[] chars = s.toCharArray();
         for(char ch: chars){
             if(ch=='(') {
@@ -54,6 +54,7 @@ public class LC301removeInvalidParentheseCheckDuplicate {
             res.add(path.toString());
             return;
         }
+        //fail basecase
         if(index >= s.length|| removeL < 0 || removeR < 0 || delta < 0){
             return;
         }
@@ -66,6 +67,7 @@ public class LC301removeInvalidParentheseCheckDuplicate {
             //remove
             dfs(res, path, s, index+1, removeL-1, removeR, delta );
             //keep 
+            //!!!this is the difference, to avoid duplicate, count for repetition
             int rep = 1;
             while (index+rep< s.length && s[index+rep] == s[index]){
                 rep++;
@@ -78,6 +80,7 @@ public class LC301removeInvalidParentheseCheckDuplicate {
             //remove
             dfs(res, path, s, index+1, removeL, removeR-1, delta );
             //keep 
+            //!!!this is the difference, to avoid duplicate, again count for repetition
              int rep = 1;
             while (index+rep< s.length && s[index+rep] == s[index]){
                 rep++;
@@ -95,9 +98,9 @@ public class LC301removeInvalidParentheseCheckDuplicate {
     
     public static void main(String[] args){
         LC301removeInvalidParentheseCheckDuplicate test = new LC301removeInvalidParentheseCheckDuplicate();
-//        String s = "()())()";
-//        List<String> res = test.removeInvalidParentheses(s);
-//        System.out.println(res);
+        String s = "()())()";
+        List<String> res = test.removeInvalidParentheses(s);
+        System.out.println(res);
         
         //test 2
         String s2 = "()))abc";

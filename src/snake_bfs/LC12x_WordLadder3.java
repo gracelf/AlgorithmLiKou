@@ -50,7 +50,7 @@ public class LC12x_WordLadder3 {
 
     private void printPath(List<String> res, String cur, String beginWord, HashMap<String, String> graph) {
         res.add(cur);
-        while ( !cur.equals(beginWord)) { // wrong condition !graph.isEmpty() &&
+        while (!cur.equals(beginWord)) { // wrong condition !graph.isEmpty() &&
             String next = graph.get(cur);
             res.add(0, next);
             graph.remove(cur);
@@ -92,9 +92,9 @@ public class LC12x_WordLadder3 {
 //            path.remove(0);
 //        }
 //    }
-    public static void main(String[] args){
+    public static void main(String[] args) {
         LC12x_WordLadder3 sol = new LC12x_WordLadder3();
-        //test case 1
+        //test case 1$
         List<String> list = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
         List<String> res = sol.findLadders("hit", "cog", list);
         System.out.println("test case 1: res: " + res);

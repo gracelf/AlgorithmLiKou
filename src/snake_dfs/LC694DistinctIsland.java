@@ -15,10 +15,11 @@ public class LC694DistinctIsland {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1 && !visited[i][j]) {
+                    // new path for each starting point
                     StringBuilder path = new StringBuilder();
                     dfs(grid, i, j, path, visited, "s");
                     res.add(path.toString());
-                     System.out.println(path.toString());
+                    System.out.println(path.toString());
                 }
             }
         }
@@ -37,12 +38,25 @@ public class LC694DistinctIsland {
         dfs(grid, i + 1, j, path, visited, "d");
         path.append("b"); // to deal the case with "T" shape island
     }
-    
-    public static void main(String[] args){
-        int[][] grid = new int[][] {{1,1,0,1,1},{1,0,0,0,0},{0,0,0,0,1},{1,1,0,1,1}};
+
+    public static void main(String[] args) {
+        int[][] grid0 = new int[][]{{1, 1, 0, 1, 1}, {1, 0, 0, 0, 0}, {0, 0, 0, 0, 1}, {1, 1, 0, 1, 1}};
         LC694DistinctIsland sol = new LC694DistinctIsland();
-        int res  = sol.numDistinctIslands(grid);
-        System.out.println("res: " + res);
+        int res = sol.numDistinctIslands(grid0);
+        System.out.println("result for test case 0: " + res);
+
+        //test 1
+        int[][] grid = {{1, 1, 1, 1, 0}, {1, 1, 0, 1, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+        int result = sol.numDistinctIslands(grid);
+        System.out.println("result for test case 1: " + result);
+        //test 2, [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
+        int[][] grid2 = {{1, 1, 0, 0, 0}, {1, 1, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 1, 1}};
+        int result2 = sol.numDistinctIslands(grid2);
+        System.out.println("result for test case 2: " + result2);
+        //test 3
+        int[][] grid3 = {{0, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {1, 1, 1, 0, 0}, {0, 1, 0, 0, 0}};
+        int result3 = sol.numDistinctIslands(grid3);
+        System.out.println("result for test case 3: " + result3);
     }
 
 }

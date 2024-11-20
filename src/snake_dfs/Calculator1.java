@@ -16,7 +16,7 @@ public class Calculator1 {
             if (Character.isDigit(chars[i])) {
                 val = val * 10 + (chars[i] - '0');
             }
-            if (!Character.isDigit(chars[i]) && !Character.isWhitespace(chars[i])|| i == len - 1) {
+            if (!Character.isDigit(chars[i]) && !Character.isWhitespace(chars[i]) || i == len - 1) {
                 if (sign == '+') {
                     sum += val;
                     lastVal = val;
@@ -76,7 +76,7 @@ public class Calculator1 {
         int res = cal.calculate(input1);
 
         System.out.println("test 1 result: " + res);
-       System.out.println("white space: " + Character.isWhitespace(' '));
+        System.out.println("white space: " + Character.isWhitespace(' '));
     }
 
 }

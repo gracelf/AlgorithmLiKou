@@ -21,9 +21,10 @@ public class LC320GeneralizedAbbreviation {
         if (index == word.length) {
             if (count > 0) {
                 path.append(count);
-                count = 0;
+                //count = 0; //no need
             }
             res.add(path.toString());
+            //important, back tracking
             path.setLength(length);
             return;
         }
@@ -37,14 +38,13 @@ public class LC320GeneralizedAbbreviation {
         path.append(word[index]);
         dfs(res, path, word, index + 1, count);
         path.setLength(length);
-
     }
 
     public static void main(String[] args) {
         LC320GeneralizedAbbreviation test = new LC320GeneralizedAbbreviation();
         String word = "word";
         List<String> res = test.generateAbbreviations(word);
-        System.out.println(res);
+        System.out.println(res.size() + " results: " + res);
     }
 
 }
